@@ -1,0 +1,27 @@
+{
+  "name": "gaslack",
+  "version": "1.0.0",
+  "description": "GASlack is a Slack API library for Google Apps Script",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/google-apps-script": "^1.0.21",
+    "@types/jest": "^26.0.20",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/namahu/GASlack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/namahu/GASlack/issues"
+  },
+  "homepage": "https://github.com/namahu/GASlack#readme"
+}
