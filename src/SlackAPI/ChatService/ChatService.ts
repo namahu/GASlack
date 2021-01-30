@@ -1,17 +1,17 @@
-import { IGASlack } from "../../Interface/GASlack";
-import { ISlackChatService } from "../../Interface/ChatService/ChatService";
+export class SlackChatService implements GASlack.ChatService.Chat {
+  readonly GASlack: GASlack.IGASlack;
 
-export class SlackChatService implements ISlackChatService {
-  readonly GASlack: IGASlack;
-
-  constructor(GASlack: IGASlack) {
+  constructor(GASlack: GASlack.IGASlack) {
     this.GASlack = GASlack;
   }
-  public postMessage = (payload) => {
+  public postMessage = (payload: GASlack.ChatService.Payload) => {
     const requestOptions: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = this.GASlack.makeRequestOptions(
       "post",
       payload
     );
-    return this.GASlack.fetch("chat.postMessage", requestOptions);
+    return this.GASlack.fetch<GASlack.ChatService.Response>(
+      "chat.postMessage",
+      requestOptions
+    );
   };
 }

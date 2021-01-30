@@ -1,18 +1,18 @@
-import { IGASlack } from "./Interface/GASlack";
+import { SlackChatService } from "./SlackAPI/ChatService/ChatService";
 
-type SlackToken = string;
+class GASlack implements GASlack.IGASlack {
+  readonly token: GASlack.SlackToken;
+  private readonly baseURL: GASlack.SlackAPIBaseURL = "https://slack.com/api/";
 
-class GASlack implements IGASlack {
-  readonly token: SlackToken;
+  readonly Chat: SlackChatService;
 
-  private readonly baseURL: string = "https://slack.com/api/";
-
-  constructor(token: SlackToken) {
+  constructor(token: GASlack.SlackToken) {
     this.token = token;
+    this.Chat = new SlackChatService(this);
   }
 
   makeRequestOptions = <T>(
-    method: GoogleAppsScript.URL_Fetch.HttpMethod,
+    method: GASlack.Request.HttpMethod,
     payload?: T
   ): GoogleAppsScript.URL_Fetch.URLFetchRequestOptions => {
     const option: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
