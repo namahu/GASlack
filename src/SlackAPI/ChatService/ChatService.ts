@@ -1,4 +1,4 @@
-export class SlackChatService implements GASlack.ChatService.Chat {
+class SlackChatService implements GASlack.ChatService.Chat {
   readonly GASlack: GASlack.IGASlack;
 
   constructor(GASlack: GASlack.IGASlack) {
@@ -15,3 +15,5 @@ export class SlackChatService implements GASlack.ChatService.Chat {
     );
   };
 }
+
+export { SlackChatService };
