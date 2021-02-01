@@ -36,4 +36,10 @@ declare namespace GASlack {
       postMessage: (payload: Payload) => Response;
     }
   }
+
+  namespace ConversationService {
+    interface Conversation {
+      getConversationsList: () => any;
+    }
+  }
 }
