@@ -1,17 +1,27 @@
-import { SlackChatService } from "./SlackAPI/ChatService/ChatService";
+import SlackChatService_ from "./SlackAPI/ChatService/ChatService";
 
-const getGASlackInstance = (slackToken: GASlack.SlackToken): GASlack => {
-  return new GASlack(slackToken);
+/**
+ * Returns a GASlack instance.
+ *
+ * @param { string } slackToken - Slack user token or Slack bot token
+ * @returns { GASlack } - Instances of GASlack
+ */
+const getGASlackInstance = (slackToken: GASlack.SlackToken): GASlack_ => {
+  return new GASlack_(slackToken);
 };
 
-class GASlack implements GASlack.IGASlack {
+/**
+ * A class that provides access to each Slack API.
+ */
+class GASlack_ implements GASlack.IGASlack {
   private token: GASlack.SlackToken;
   private readonly baseURL: GASlack.SlackAPIBaseURL = "https://slack.com/api/";
 
-  readonly Chat: SlackChatService = new SlackChatService(this);
+  readonly Chat: GASlack.ChatService.Chat;
 
   constructor(token: GASlack.SlackToken) {
     this.token = token;
+    this.Chat = new SlackChatService_(this);
   }
 
   makeRequestOptions = <T>(
