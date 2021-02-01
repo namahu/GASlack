@@ -38,8 +38,17 @@ declare namespace GASlack {
   }
 
   namespace ConversationService {
+    enum channelTypes {
+      PUBLIC = "public_channel",
+      PRIVATE = "private_channel",
+    }
+
+    type ConversationParams = {
+      limit?: number;
+      types?: string;
+    };
     interface Conversation {
-      getConversationsList: () => any;
+      getConversationsList: (params?: ConversationParams) => any;
     }
   }
 }
