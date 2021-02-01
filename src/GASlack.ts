@@ -1,4 +1,5 @@
 import SlackChatService_ from "./SlackAPI/ChatService/ChatService";
+import SlackConversationService_ from "./SlackAPI/ConversationService/ConversationService";
 
 /**
  * Returns a GASlack instance.
@@ -17,10 +18,12 @@ class GASlackService implements GASlack.IGASlack {
   private token: GASlack.SlackToken;
   private readonly baseURL: GASlack.SlackAPIBaseURL = "https://slack.com/api/";
 
+  readonly Conversation: GASlack.ConversationService.Conversation;
   readonly Chat: GASlack.ChatService.Chat;
 
   constructor(token: GASlack.SlackToken) {
     this.token = token;
+    this.Conversation = new SlackConversationService_(this);
     this.Chat = new SlackChatService_(this);
   }
 
