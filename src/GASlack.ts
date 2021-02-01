@@ -4,16 +4,16 @@ import SlackChatService_ from "./SlackAPI/ChatService/ChatService";
  * Returns a GASlack instance.
  *
  * @param { string } slackToken - Slack user token or Slack bot token
- * @returns { GASlack } - Instances of GASlack
+ * @returns { GASlackService } - Instances of GASlack
  */
-const getGASlackInstance = (slackToken: GASlack.SlackToken): GASlack_ => {
-  return new GASlack_(slackToken);
+const getGASlackInstance = (slackToken: GASlack.SlackToken): GASlackService => {
+  return new GASlackService(slackToken);
 };
 
 /**
  * A class that provides access to each Slack API.
  */
-class GASlack_ implements GASlack.IGASlack {
+class GASlackService implements GASlack.IGASlack {
   private token: GASlack.SlackToken;
   private readonly baseURL: GASlack.SlackAPIBaseURL = "https://slack.com/api/";
 
