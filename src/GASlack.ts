@@ -27,13 +27,19 @@ class GASlackService implements GASlack.IGASlack {
     this.Chat = new SlackChatService_(this);
   }
 
+  makeQueryString = <T>(params: T): string => {
+    const keys: Array<keyof T> = Object.keys(params) as Array<keyof T>;
+    return keys.map((k) => `${k}=${params[k]}`).join("&");
+  };
+
   makeRequestOptions = <T>(
     method: GASlack.Request.HttpMethod,
+    contentType: string,
     payload?: T
   ): GoogleAppsScript.URL_Fetch.URLFetchRequestOptions => {
     const option: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
       method: method,
-      contentType: "application/json",
+      contentType: contentType,
       headers: {
         Authorization: `Bearer ${this.token}`,
       },
