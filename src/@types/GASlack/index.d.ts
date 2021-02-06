@@ -7,8 +7,10 @@ declare namespace GASlack {
   }
 
   interface IGASlack {
+    makeQueryString: <T>(params: T) => string;
     makeRequestOptions: <T>(
       method: GoogleAppsScript.URL_Fetch.HttpMethod,
+      contentType: string,
       payload?: T
     ) => GoogleAppsScript.URL_Fetch.URLFetchRequestOptions;
 
