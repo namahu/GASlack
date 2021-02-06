@@ -10,9 +10,12 @@ export default class SlackConversationService_
     params?: GASlack.ConversationService.ConversationParams
   ) => {
     const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = this.GASlack.makeRequestOptions(
-      "get"
+      "get",
+      "application/x-www-form-urlencoded"
     );
 
-    return this.GASlack.fetch("conversations.list", options);
+    const query: string = params ? this.GASlack.makeQueryString(params) : "";
+
+    return this.GASlack.fetch(`conversations.list/${query}`, options);
   };
 }
