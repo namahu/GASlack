@@ -18,12 +18,12 @@ class GASlackService implements GASlack.IGASlack {
   private token: GASlack.SlackToken;
   private readonly baseURL: GASlack.SlackAPIBaseURL = "https://slack.com/api/";
 
-  readonly Conversation: GASlack.ConversationService.Conversation;
+  readonly Conversations: GASlack.ConversationsService.Conversations;
   readonly Chat: GASlack.ChatService.Chat;
 
   constructor(token: GASlack.SlackToken) {
     this.token = token;
-    this.Conversation = new SlackConversationService_(this);
+    this.Conversations = new SlackConversationService_(this);
     this.Chat = new SlackChatService_(this);
   }
 
