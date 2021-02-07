@@ -1,5 +1,5 @@
-import SlackChatService_ from "./SlackAPI/ChatService/ChatService";
-import SlackConversationService_ from "./SlackAPI/ConversationService/ConversationService";
+import { SlackChatService_ } from "./SlackAPI/ChatService/ChatService";
+import { SlackConversationsService_ } from "./SlackAPI/ConversationService/ConversationService";
 
 /**
  * Returns a GASlack instance.
@@ -23,7 +23,7 @@ class GASlackService implements GASlack.IGASlack {
 
   constructor(token: GASlack.SlackToken) {
     this.token = token;
-    this.Conversations = new SlackConversationService_(this);
+    this.Conversations = new SlackConversationsService_(this);
     this.Chat = new SlackChatService_(this);
   }
 
