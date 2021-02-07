@@ -22,6 +22,7 @@ export default class SlackChatService_ implements GASlack.ChatService.Chat {
   public postMessage = (payload: GASlack.ChatService.Payload) => {
     const requestOptions: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = this.GASlack.makeRequestOptions(
       "post",
+      "application/json",
       payload
     );
     return this.GASlack.fetch<GASlack.ChatService.Response>(
