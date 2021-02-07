@@ -1,4 +1,4 @@
-export default class SlackConversationsService_
+class SlackConversationsService_
   implements GASlack.ConversationsService.Conversations {
   readonly GASlack: GASlack.IGASlack;
 
@@ -24,3 +24,5 @@ export default class SlackConversationsService_
     );
   };
 }
+
+export { SlackConversationsService_ };

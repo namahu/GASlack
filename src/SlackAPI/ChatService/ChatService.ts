@@ -1,7 +1,7 @@
 /**
  * Chat API class
  */
-export default class SlackChatService_ implements GASlack.ChatService.Chat {
+class SlackChatService_ implements GASlack.ChatService.Chat {
   readonly GASlack: GASlack.IGASlack;
 
   /**
@@ -31,3 +31,5 @@ export default class SlackChatService_ implements GASlack.ChatService.Chat {
     );
   };
 }
+
+export { SlackChatService_ };
