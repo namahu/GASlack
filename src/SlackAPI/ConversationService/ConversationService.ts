@@ -6,7 +6,9 @@ export default class SlackConversationsService_
     this.GASlack = GASlack;
   }
 
-  public list = (params?: GASlack.ConversationsService.ConversationsParams) => {
+  public list = (
+    params?: GASlack.ConversationsService.ConversationsParams
+  ): GASlack.ConversationsService.ConversationsResponse => {
     const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = this.GASlack.makeRequestOptions(
       "get",
       "application/x-www-form-urlencoded"
@@ -16,6 +18,9 @@ export default class SlackConversationsService_
       ? `?${this.GASlack.makeQueryString(params)}`
       : "";
 
-    return this.GASlack.fetch(`conversations.list/${query}`, options);
+    return this.GASlack.fetch<GASlack.ConversationsService.ConversationsResponse>(
+      `conversations.list/${query}`,
+      options
+    );
   };
 }
