@@ -102,4 +102,14 @@ declare namespace GASlack {
       list: (params?: ConversationsParams) => any;
     }
   }
+
+  namespace UsersService {
+    interface UsersListParams {
+      limit?: number;
+      include_locale?: boolean;
+    }
+    interface Users {
+      list: (params: UsersListParams) => any;
+    }
+  }
 }
