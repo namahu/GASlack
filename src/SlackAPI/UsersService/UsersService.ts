@@ -4,7 +4,9 @@ class SlackUsersService_ implements GASlack.UsersService.Users {
   constructor(GASlack: GASlack.IGASlack) {
     this.GASlack = GASlack;
   }
-  public list = (params: GASlack.UsersService.UsersListParams) => {
+  public list = (
+    params: GASlack.UsersService.UsersListParams
+  ): GASlack.UsersService.UsersListResponse => {
     const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = this.GASlack.makeRequestOptions(
       "get",
       "application/x-www-form-urlencoded"
@@ -14,6 +16,9 @@ class SlackUsersService_ implements GASlack.UsersService.Users {
       ? `?${this.GASlack.makeQueryString(params)}`
       : "";
 
-    return this.GASlack.fetch(`users.list/${query}`, options);
+    return this.GASlack.fetch<GASlack.UsersService.UsersListResponse>(
+      `users.list/${query}`,
+      options
+    );
   };
 }

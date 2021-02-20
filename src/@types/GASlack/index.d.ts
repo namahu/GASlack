@@ -154,7 +154,7 @@ declare namespace GASlack {
       include_locale?: boolean;
     }
     interface Users {
-      list: (params: UsersListParams) => any;
+      list: (params: UsersListParams) => GASlack.UsersService.UsersListResponse;
     }
   }
 }
