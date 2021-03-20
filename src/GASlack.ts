@@ -20,11 +20,13 @@ class GASlackService implements GASlack.IGASlack {
 
   readonly Conversations: GASlack.ConversationsService.Conversations;
   readonly Chat: GASlack.ChatService.Chat;
+  readonly Users: GASlack.UsersService.Users;
 
   constructor(token: GASlack.SlackToken) {
     this.token = token;
     this.Conversations = new SlackConversationsService_(this);
     this.Chat = new SlackChatService_(this);
+    this.Users = new SlackUsersService_(this);
   }
 
   makeQueryString = <T>(params: T): string => {
