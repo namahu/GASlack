@@ -1,7 +1,7 @@
 /**
  * Chat API class
  */
-class SlackChatService_ implements GASlack.ChatService.Chat {
+class SlackChatService_ implements GASlack.ChatService.IChat {
   readonly GASlack: GASlack.IGASlack;
 
   /**
@@ -27,6 +27,18 @@ class SlackChatService_ implements GASlack.ChatService.Chat {
     );
     return this.GASlack.fetch<GASlack.ChatService.Response>(
       "chat.postMessage",
+      requestOptions
+    );
+  };
+
+  public postEphemeral = (payload: GASlack.ChatService.EphemeralMessagePayload) => {
+    const requestOptions = this.GASlack.makeRequestOptions(
+      "post",
+      "application/json",
+      payload
+    );
+    return this.GASlack.fetch<GASlack.ChatService.Response>(
+      "chat.postEphemeral",
       requestOptions
     );
   };
