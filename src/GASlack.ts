@@ -19,7 +19,7 @@ class GASlackService implements GASlack.IGASlack {
   private readonly baseURL: GASlack.SlackAPIBaseURL = "https://slack.com/api/";
 
   readonly Conversations: GASlack.ConversationsService.Conversations;
-  readonly Chat: GASlack.ChatService.Chat;
+  readonly Chat: GASlack.ChatService.IChat;
   readonly Users: GASlack.UsersService.Users;
 
   constructor(token: GASlack.SlackToken) {

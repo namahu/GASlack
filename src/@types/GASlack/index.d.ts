@@ -31,6 +31,10 @@ declare namespace GASlack {
       text: string;
     };
 
+    type EphemeralMessagePayload = Payload & {
+      user: string;
+    };
+
     type Response = {
       ok: boolean;
       channel: string;
@@ -39,8 +43,9 @@ declare namespace GASlack {
       error?: any;
     };
 
-    interface Chat {
+    interface IChat {
       postMessage: (payload: Payload) => Response;
+      postEphemeral: (Payload: EphemeralMessagePayload) => Response;
     }
   }
 
